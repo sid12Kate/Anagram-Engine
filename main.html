@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>User Anagram Engine</title>
+  </head>
+  <body>
+  {% if user%}
+  <p>Hello {{ user.email() }} welcome to the application</p>
+  To add a new word to your list<a href="/wordlist"> Click here </a><br/>
+  Search for anagrams<br/>
+  <form method="get" action="/">
+    <input type="text" name="value_2" pattern="[A-Za-z]{3,}" title="Enter alphabets only" value=""><br/>
+    <input type="submit" name="button" value="Search"/>
+    </form>
+    {% for x in anagramlist %}
+    {{ x }}<form method="get" action="/"><input type="hidden" value="{{ loop.index }}" name="index"/>
+   </form>
+ {% endfor %}
+
+  {% else %}
+  <p>Hello guest welcome to the application</p>
+  {% endif %}
+  <p>you can {{ url_string }} <a href='{{ url }}'>here</a></p>
+  </body>
+</html>

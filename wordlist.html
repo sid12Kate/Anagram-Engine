@@ -1,0 +1,17 @@
+<html>
+<head>
+  <meta charset="utf-8" >
+  <title>Anagram</title>
+  </head>
+  <body>
+    Enter a word:
+    <form method="post" action="/wordlist">
+      <input type="text" name="value_1" pattern="[A-Za-z]{3,}" title="Enter alphabets only" value=""><br/>
+      <input type="submit" name="button" value="Add"/>
+      </form>
+      <form enctype = "multipart/form-data" action = "/wordlist" method = "post">
+   <p>File: <input type = "file" name = "filename" /></p>
+   <p><input type = "submit" name="button" value = "Upload" /></p>
+   </form>
+
+      </html>
