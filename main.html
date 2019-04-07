@@ -3,24 +3,56 @@
   <head>
     <meta charset="utf-8">
     <title>User Anagram Engine</title>
+    <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+</style>
+</head>
   </head>
-  <body>
+  <body bgcolor="#E6E6FA">
   {% if user%}
-  <p>Hello {{ user.email() }} welcome to the application</p>
-  To add a new word to your list<a href="/wordlist"> Click here </a><br/>
-  Search for anagrams<br/>
+  <ul>
+    <li><a href="/wordlist">AddWords</a></li>
+    <li><a href="{{ url }}">Logout</a></li>
+  </ul>
+  <center><font size="5">  {{ welcome }} {{ user.email() }} </font><br/></center>
+
+
+    <center><font size="3">Search for anagrams</font><br/>
   <form method="get" action="/">
     <input type="text" name="value_2" pattern="[A-Za-z]{3,}" title="Enter alphabets only" value=""><br/>
     <input type="submit" name="button" value="Search"/>
-    </form>
+  </form></center>
     {% for x in anagramlist %}
-    {{ x }}<form method="get" action="/"><input type="hidden" value="{{ loop.index }}" name="index"/>
-   </form>
+    <center><p>{{ x }}<form method="get" action="/"><input type="hidden" value="{{ loop.index }}" name="index"/>
+   </form></center></p>
  {% endfor %}
 
   {% else %}
-  <p>Hello guest welcome to the application</p>
+    <center><font size="5"><p>Hello guest welcome to the application</p></font></center>
+    <center><font size="3"> <p>you can {{ url_string }} <a href='{{ url }}'>here</a></p></font></center>
   {% endif %}
-  <p>you can {{ url_string }} <a href='{{ url }}'>here</a></p>
+
   </body>
 </html>

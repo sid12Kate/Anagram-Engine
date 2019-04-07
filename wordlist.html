@@ -3,15 +3,16 @@
   <meta charset="utf-8" >
   <title>Anagram</title>
   </head>
-  <body>
-    Enter a word:
+  <body bgcolor="#E6E6FA">
+    <center><p><font size="3">Enter a word:</font>
     <form method="post" action="/wordlist">
       <input type="text" name="value_1" pattern="[A-Za-z]{3,}" title="Enter alphabets only" value=""><br/>
       <input type="submit" name="button" value="Add"/>
-      </form>
-      <form enctype = "multipart/form-data" action = "/wordlist" method = "post">
+    </form></center></p>
+      <center><p><font size="5"> OR </font></p></center>
+      <center><p><font size="3"><form enctype = "multipart/form-data" action = "/wordlist" method = "post"></p>
    <p>File: <input type = "file" name = "filename" /></p>
    <p><input type = "submit" name="button" value = "Upload" /></p>
-   </form>
+ </form></center>
 
       </html>

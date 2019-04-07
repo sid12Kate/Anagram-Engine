@@ -35,29 +35,24 @@ class WordList(webapp2.RequestHandler):
             string = self.request.get('value_1')
             word = sorted(string)
             order = ''.join(word)
-
-            for x in anagramlist.list:
-                if x == string:
-                    self.redirect('/')
-                else:
-                    key = ndb.Key('AnagramList', user.user_id()+order)
-                    anagramlist = key.get()
-                    if anagramlist == None:
-                        anagramlist = AnagramList(id=user.user_id()+order)
-                        anagramlist.list.append(string)
-                        anagramlist.wordcount = 1
-                        myuser.anagramcount += 1
-                        myuser.wordcount += 1
-                        anagramlist.lettercount = len(order)
-                        anagramlist.put()
-                        myuser.put()
-                    else:
-                        length = len(anagramlist.list)
-                        anagramlist.wordcount = length + 1
-                        myuser.wordcount += 1
-                        anagramlist.list.append(string)
-                        anagramlist.put()
-                        myuser.put()
+            key = ndb.Key('AnagramList', user.user_id()+order)
+            anagramlist = key.get()
+            if anagramlist == None:
+                anagramlist = AnagramList(id=user.user_id()+order)
+                anagramlist.list.append(string)
+                anagramlist.wordcount = 1
+                myuser.anagramcount += 1
+                myuser.wordcount += 1
+                anagramlist.lettercount = len(order)
+                anagramlist.put()
+                myuser.put()
+            else:
+                length = len(anagramlist.list)
+                anagramlist.wordcount = length + 1
+                myuser.wordcount += 1
+                anagramlist.list.append(string)
+                anagramlist.put()
+                myuser.put()
         if action == 'Upload':
             words = self.request.get('filename')
             content = words.split()
